@@ -28,11 +28,11 @@ ini_set("display_errors", 1);
 if (isset($_FILES["mytest"]["name"]) && !empty($_FILES["mytest"]["name"])) 
 	{
 		$filename=$_FILES["mytest"]["name"];
-		$test_array=explode(".", $filename);
+		$testArray=explode(".", $filename);
 		//echo "<pre>";
-		//print_r($test_array);
+		//print_r($testArray);
 		
-		if ($test_array[1] !== "json") 
+		if ($testArray[1] !== "json") 
 			{
 				echo "Пожалуйста, выберите файл формата JSON.";
 			}
@@ -45,13 +45,13 @@ if (isset($_FILES["mytest"]["name"]) && !empty($_FILES["mytest"]["name"]))
 			{
 				move_uploaded_file($_FILES["mytest"]["tmp_name"], "uploaded/".basename($_FILES["mytest"]["name"]));
 				header('Location: list1.php');
-				echo "Тест загружен на сервер.";
-				echo "<h3>Информация о загруженном на сервер файле: </h3>";
-				echo "<p><strong>Оригинальное имя загруженного файла:</strong> ".$_FILES['mytest']['name']."</p>";
-				echo "<p><strong>Mime-тип загруженного файла:</strong> ".$_FILES['mytest']['type']."</p>";
-				echo "<p><strong>Размер загруженного файла в байтах:</strong> ".$_FILES['mytest']['size']."</p>";
-				$filepath=realpath("uploaded/".basename($_FILES["mytest"]["name"]));
-				$shortfilepath=str_replace($_SERVER['DOCUMENT_ROOT'], '', $filepath);
+				//echo "Тест загружен на сервер.";
+				//echo "<h3>Информация о загруженном на сервер файле: </h3>";
+				//echo "<p><strong>Оригинальное имя загруженного файла:</strong> ".$_FILES['mytest']['name']."</p>";
+				//echo "<p><strong>Mime-тип загруженного файла:</strong> ".$_FILES['mytest']['type']."</p>";
+				//echo "<p><strong>Размер загруженного файла в байтах:</strong> ".$_FILES['mytest']['size']."</p>";
+				//$filepath=realpath("uploaded/".basename($_FILES["mytest"]["name"]));
+				//$shortfilepath=str_replace($_SERVER['DOCUMENT_ROOT'], '', $filepath);
 				//var_dump($shortfilepath);
 
 ?>

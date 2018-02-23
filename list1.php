@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 $dir="uploaded";
-$test_array=[];
+$testArray=[];
 
 if (is_dir($dir)) 
 {
@@ -12,8 +12,8 @@ if (is_dir($dir))
 	//echo "Нашлась такая папка!", PHP_EOL;
 	foreach (glob("$dir/*.json") as $filetype) 
 	{
-		$test_content=file_get_contents($filetype);
-		$test_array=explode(",", $test_content);
+		$testContent=file_get_contents($filetype);
+		$testArray=explode(",", $testContent);
 		//echo "<pre>";
 		//print_r($test_array);
 		//echo "</pre>";
@@ -24,7 +24,7 @@ else
 	echo "Тесты не найдены!";
 }
 
-foreach ($test_array as $value) 
+foreach ($testArray as $value) 
 {
 	if (strpos($value, ":") == true) 
 	{

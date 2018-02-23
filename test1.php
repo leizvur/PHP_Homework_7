@@ -17,18 +17,18 @@ ini_set("display_errors", 1);
 //var_dump($_POST);
 //echo "</pre>";
 
-$test_number;
-$test1_array=[];
-$test2_array=[];
-$test3_array=[];
+$testNumber;
+$test1Array=[];
+$test2Array=[];
+$test3Array=[];
 
 //Шаг 1. Проверка номера теста
 
 if (isset($_GET["mytest"]) && !empty($_GET["mytest"])) 
 	{
-		$test_number=$_GET["mytest"];
+		$testNumber=$_GET["mytest"];
 		//echo "<pre>";
-		//var_dump($test_number);
+		//var_dump($testNumber);
 		//echo "</pre>";
 	}
 	else 
@@ -38,22 +38,22 @@ if (isset($_GET["mytest"]) && !empty($_GET["mytest"]))
 
 
 //Шаг 2. Загрузка соответствующего номеру json в массив
-$test_number;
+$testNumber;
 
-if ($test_number==="1") 
+if ($testNumber==="1") 
 	{
 		//echo "Первый тест";
-		$test1_content=file_get_contents("./uploaded/test1.json");
-		$test1_array=json_decode($test1_content, true);
+		$test1Content=file_get_contents("./uploaded/test1.json");
+		$test1Array=json_decode($test1Content, true);
 		//echo "<pre>";
 		//print_r($test1_array);
 		//echo "</pre>"; 
 		 ?>
 		<form action="test1.php?mytest=1" enctype="multipart/form-data" method="POST">
-			<p><label><strong><?php echo $test1_array["TEST1_QUESTION"]?></strong></label></p>
-			<p><input type="radio" name="answer" value="a1"><?php echo $test1_array["TEST1_ANSWER_1"]?></p>
-			<p><input type="radio" name="answer" value="a2"><?php echo $test1_array["TEST1_ANSWER_2"]?></p>
-			<p><input type="radio" name="answer" value="a3"><?php echo $test1_array["TEST1_ANSWER_3"]?></p>
+			<p><label><strong><?php echo $test1Array["TEST1_QUESTION"]?></strong></label></p>
+			<p><input type="radio" name="answer" value="a1"><?php echo $test1Array["TEST1_ANSWER_1"]?></p>
+			<p><input type="radio" name="answer" value="a2"><?php echo $test1Array["TEST1_ANSWER_2"]?></p>
+			<p><input type="radio" name="answer" value="a3"><?php echo $test1Array["TEST1_ANSWER_3"]?></p>
   			<p><input type="submit" name="CheckTest" value="Проверить" title="Проверить"></p>
 		</form>
 		<?php
@@ -84,19 +84,19 @@ if ($test_number==="1")
 		}
 	} 
 	
-	elseif ($test_number==="2") 
+	elseif ($testNumber==="2") 
 		{
 			//echo "Второй тест";
-			$test2_content=file_get_contents("./uploaded/test2.json");
-			$test2_array=json_decode($test2_content, true);
+			$test2Content=file_get_contents("./uploaded/test2.json");
+			$test2Array=json_decode($test2Content, true);
 			//echo "<pre>";
-			//print_r($test2_array);
+			//print_r($test2Array);
 			//echo "</pre>"; ?>
 			<form action="test1.php?mytest=2" enctype="multipart/form-data" method="POST">
-				<p><label><strong><?php echo $test2_array["TEST2_QUESTION"]?></strong></label></p>
-				<p><input id="t2a1" type="radio" name="answer" value="a1"><?php echo $test2_array["TEST2_ANSWER_1"]?></p>
-				<p><input id="t2a2" type="radio" name="answer" value="a2"><?php echo $test2_array["TEST2_ANSWER_2"]?></p>
-				<p><input id="t2a3" type="radio" name="answer" value="a3"><?php echo $test2_array["TEST2_ANSWER_3"]?></p>
+				<p><label><strong><?php echo $test2Array["TEST2_QUESTION"]?></strong></label></p>
+				<p><input id="t2a1" type="radio" name="answer" value="a1"><?php echo $test2Array["TEST2_ANSWER_1"]?></p>
+				<p><input id="t2a2" type="radio" name="answer" value="a2"><?php echo $test2Array["TEST2_ANSWER_2"]?></p>
+				<p><input id="t2a3" type="radio" name="answer" value="a3"><?php echo $test2Array["TEST2_ANSWER_3"]?></p>
   				<p><input type="submit" name="CheckTest" value="Проверить" title="Проверить"></p>
 			</form>
 			<?php
@@ -111,8 +111,9 @@ if ($test_number==="1")
 			{
 				echo "В точку!";?>
 				<p><form>
-					<input type="submit" formaction="list1.php" name="ShowTestList" value="Мне понравилось! Хочу еще тест!" title="Мне понравилось! Хочу еще тест!">
-				</form></p> <?php
+					<p><input type="submit" formaction="list1.php" name="ShowTestList" value="Мне понравилось! Хочу еще тест!" title="Мне понравилось! Хочу еще тест!"></p>
+					<p><input type="submit" formaction="certificate.php" name="GiveCertificate" value="Получить сертификат" title="Получить"></p>
+				</form> <?php
 			} 
 			if (!empty($_POST["answer"]) && $_POST["answer"]!="a2") 
 			{
@@ -124,19 +125,19 @@ if ($test_number==="1")
 			}
 			
 		}
-		elseif ($test_number==="3")
+		elseif ($testNumber==="3")
 			{
 				//echo "Третий тест";
-				$test3_content=file_get_contents("./uploaded/test3.json");
-				$test3_array=json_decode($test3_content, true);
+				$test3Content=file_get_contents("./uploaded/test3.json");
+				$test3Array=json_decode($test3Content, true);
 				//echo "<pre>";
-				//print_r($test3_array);
+				//print_r($test3Array);
 				//echo "</pre>"; ?>
 				<form action="test1.php?mytest=3" enctype="multipart/form-data" method="POST">
-					<p><label><strong><?php echo $test3_array["TEST3_QUESTION"]?></strong></label></p>
-					<p><input id="choice" type="radio" name="answer" value="a1"><?php echo $test3_array["TEST3_ANSWER_1"]?></p>
-					<p><input id="choice" type="radio" name="answer" value="a2"><?php echo $test3_array["TEST3_ANSWER_2"]?></p>
-					<p><input id="choice" type="radio" name="answer" value="a3"><?php echo $test3_array["TEST3_ANSWER_3"]?></p>
+					<p><label><strong><?php echo $test3Array["TEST3_QUESTION"]?></strong></label></p>
+					<p><input id="choice" type="radio" name="answer" value="a1"><?php echo $test3Array["TEST3_ANSWER_1"]?></p>
+					<p><input id="choice" type="radio" name="answer" value="a2"><?php echo $test3Array["TEST3_ANSWER_2"]?></p>
+					<p><input id="choice" type="radio" name="answer" value="a3"><?php echo $test3Array["TEST3_ANSWER_3"]?></p>
   					<p><input id="choice" type="submit" name="CheckTest" value="Проверить" title="Проверить"></p>
 				</form>
 				<?php
@@ -149,10 +150,11 @@ if ($test_number==="1")
 
 				if (!empty($_POST["answer"]) && $_POST['answer']==="a1") 
 				{
-					echo "В точку!!";?>
-						<p><form>
-							<input type="submit" formaction="list1.php" name="ShowTestList" value="Мне понравилось! Хочу еще тест!" title="Мне понравилось! Хочу еще тест!">
-						</form></p> <?php
+					echo "В точку!";?>
+						<form>
+							<p><input type="submit" formaction="list1.php" name="ShowTestList" value="Мне понравилось! Хочу еще тест!" title="Мне понравилось! Хочу еще тест!"></p>
+							<p><input type="submit" formaction="certificate.php" name="GiveCertificate" value="Получить сертификат" title="Получить"></p>
+						</form> <?php
 
 				} 
 				if (!empty($_POST["answer"]) && $_POST["answer"]!="a1") 
