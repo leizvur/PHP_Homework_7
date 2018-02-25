@@ -14,12 +14,6 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-//echo "<pre>";
-//var_dump($_FILES);
-//var_dump($_POST);
-//echo "</pre>";
-
-
 @mkdir("uploaded", 0777);
 
 
@@ -45,15 +39,7 @@ if (isset($_FILES["mytest"]["name"]) && !empty($_FILES["mytest"]["name"]))
 			{
 				move_uploaded_file($_FILES["mytest"]["tmp_name"], "uploaded/".basename($_FILES["mytest"]["name"]));
 				header('Location: list1.php');
-				//echo "Тест загружен на сервер.";
-				//echo "<h3>Информация о загруженном на сервер файле: </h3>";
-				//echo "<p><strong>Оригинальное имя загруженного файла:</strong> ".$_FILES['mytest']['name']."</p>";
-				//echo "<p><strong>Mime-тип загруженного файла:</strong> ".$_FILES['mytest']['type']."</p>";
-				//echo "<p><strong>Размер загруженного файла в байтах:</strong> ".$_FILES['mytest']['size']."</p>";
-				//$filepath=realpath("uploaded/".basename($_FILES["mytest"]["name"]));
-				//$shortfilepath=str_replace($_SERVER['DOCUMENT_ROOT'], '', $filepath);
-				//var_dump($shortfilepath);
-
+				exit;
 ?>
 				<input type="submit" formaction="list1.php" value="Выбрать тест"><br><br>
 <?php			

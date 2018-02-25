@@ -1,4 +1,8 @@
 <?php
+session_start();
+$_SESSION;
+
+//var_dump($_SESSION); 
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
@@ -60,10 +64,12 @@ foreach ($testArray as $value)
 		<p><label><strong>Введи свое имя:</strong></label></p>
 		<p><input type="text" name="myname" placeholder="Человек-невидимка" required></p>
 		<p><input type="submit" formaction="list1.php" name="RememberMyName" value="OK"></p>
-		</form><?php
-	} 
+	</form><?php	
+	}
+	
 	else 
 	{
+		$_SESSION["user"]=$_POST["myname"];
 		http_response_code(200);?>
 		<form enctype="multipart/form-data" method="GET">
 		<p><label><strong>Выбери тест:</strong></label></p>

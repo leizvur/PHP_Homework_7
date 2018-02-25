@@ -1,9 +1,13 @@
 <?php
+session_start();
+//Текст сертификата
+
+//var_dump($_SESSION["user"]);
+
 
 //Текст сертификата
-$certText="Этот сертификат подтверждает, что ты на 33,3% рожден в СССР!";
-//session_start();
-//$_SESSION["code"]=$certText;
+$certText=$_SESSION["user"] . " - человек, на 33,3% рожденный в СССР!";
+
 
 //Картинка сертификата
 $image=imagecreatetruecolor(640, 320);
